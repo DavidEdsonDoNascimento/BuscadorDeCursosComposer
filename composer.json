@@ -1,0 +1,12 @@
+{
+    "name": "david.nascimento/buscador-de-cursos",
+    "description": "Projeto que busca os cursos no site da Alura",
+    "type": "library",
+    "authors": [
+        {
+            "name": "David Edson do Nascimento",
+            "email": "david.contato.tec@gmail.com"
+        }
+    ],
+    "require": {}
+}
