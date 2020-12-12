@@ -1,11 +1,19 @@
 <?php
 
+require 'vendor/autoload.php';
+require 'src/Buscador.php';
+
 use GuzzleHttp\Client;
+use Symfony\Component\DomCrawler\Crawler;
+use BuscaCursosPeloDOM\Web\Buscador;
 
-$cliente = new Client();
+//Cliente HTTP criado e passado um objeto que diz que a URL Base é tal URL
+$client = new Client(['base_uri' => 'https://www.alura.com.br' ]);
+$crawler = new Crawler();
+$buscador = new Buscador($client, $crawler);
 
-$response = $cliente->request(method: 'GET', uri: 'https://cursos.alura.com.br/category/programacao/php');
+$cursos = $buscador->getCursos(url: '/cursos-online-programacao/php');
 
-echo $response->getStatusCode();
-
-$html = $response->getBody();
+ foreach($cursos as $curso){
+     echo $curso. PHP_EOL;
+ }
