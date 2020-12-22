@@ -1,5 +1,6 @@
 <?php
 namespace BuscaCursosPeloDOM\Web;
+
 use GuzzleHttp\ClientInterface;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -16,12 +17,12 @@ class Buscador
 
     public function getCursos(string $url) : array
     {
-        $response = $this->httpClient->request(method:'GET', uri: $url);
+        $response = $this->httpClient->request('GET', $url);
         $html = $response->getBody();
 
         $this->crawler->addHtmlContent($html);
 
-        $elementosDOM = $this->crawler->filter(selector:'span.card-curso__nome');
+        $elementosDOM = $this->crawler->filter('span.card-curso__nome');
         $cursos = [];
 
         foreach($elementosDOM as $elemento)
